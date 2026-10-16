@@ -120,6 +120,7 @@ $('searchClients').oninput=()=>{let q=$('searchClients').value.toLowerCase();[..
 $('yearSelect').onchange=renderIncome;
 function exportCSV(){let y=Number($('yearSelect').value),rows=[['Fecha','Clienta','Concepto','Monto','Estado'],...payments.filter(p=>Number(p.date.slice(0,4))===y).map(p=>[p.date,clients.find(c=>c.id===p.clientId)?.name||'Clienta eliminada',p.type==='afro'?'Taller Afro':'Gimnasio',p.amount,p.status==='paid'?'Pagado':'Pendiente'])];let csv='\ufeff'+rows.map(r=>r.map(x=>'"'+String(x).replace(/"/g,'""')+'"').join(';')).join('\r\n');let a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8;'}));a.download='ingresos_karla_fitness_'+y+'.csv';a.click();URL.revokeObjectURL(a.href)}window.exportCSV=exportCSV;
 boot();
+</script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
