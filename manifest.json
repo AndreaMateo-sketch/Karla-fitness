@@ -1,0 +1,23 @@
+{
+  "name": "Karla Fitness",
+  "short_name": "Karla Fitness",
+  "description": "Gestión de clientas, asistencias y pagos",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f7f4f8",
+  "theme_color": "#ed168b",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "./icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "./icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
