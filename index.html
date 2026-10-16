@@ -105,7 +105,7 @@ $('kfLoginCard').addEventListener('submit',async e=>{
 async function boot(){
  if(SUPABASE_URL.includes('PEGA_AQUI')||SUPABASE_KEY.includes('PEGA_AQUI'))return;
 if (!sb) sb = window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
- const {data}=await sb.auth.getSession();if(data.session){$('kfLoginGate').style.display='none';try{await loadData()}catch(e){showError(e)}}
+if(data.session){$('kfLoginGate').style.display='flex'} 
 }
 $('clientForm').onsubmit=async e=>{e.preventDefault();let dni=$('dni').value.trim();if(dni&&clients.some(c=>c.dni===dni)){alert('Ya existe una clienta con ese DNI.');return}
  try{const {error}=await sb.from('clients').insert({full_name:$('name').value.trim(),dni:dni||null,plan:$('plan').value,start_date:today(),end_date:$('expiry').value||today(),phone:$('phone').value.trim()||null,note:$('notes').value.trim()||null,amount:0});if(error)throw error;e.target.reset();await loadData();alert('Clienta guardada en la nube.')}catch(err){showError(err)}};
